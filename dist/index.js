@@ -24,9 +24,8 @@ const getWeather = (city) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 const currentWeather = () => __awaiter(void 0, void 0, void 0, function* () {
-    let weather = yield getWeather('Bath');
-    console.log(weather.weather);
+    const weather = yield getWeather('Bath');
     return weather.weather;
 });
-currentWeather().then(console.log);
+currentWeather().then(console.table);
 exports.default = getWeather;
