@@ -1,6 +1,7 @@
-import getWeather from "../src";
-
+ import weatherService from "../src/weatherService";
 global.fetch = jest.fn();
+const getWeather = weatherService.getWeather
+const convertToFahrenheit = weatherService.convertToFahrenheit
 
 test('fetches weather data for valid city', async () => {
     (fetch as jest.Mock).mockResolvedValueOnce({
@@ -19,3 +20,5 @@ test('throws an error when API request fails', async () => {
     });
     await expect(getWeather('InvalidCity')).rejects.toThrow('Failed to fetch weather data');
 });
+
+test('10.41 C converts to 50.738 F', () => expect(convertToFahrenheit(10.41)).toBeCloseTo(50.738, 3))
